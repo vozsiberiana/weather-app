@@ -2,12 +2,94 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=
-    , initial-scale=1.0"
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
     />
+    <script
+      src="https://kit.fontawesome.com/15d9645574.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="src/style.css" />
     <title>Weather App</title>
   </head>
-  <body></body>
+
+  <body>
+    <div class="container">
+      <div class="phone-screen">
+        <form id="search-form">
+          <div class="row">
+            <div class="col-9">
+              <input
+                class="form-control search-area shadow-sm"
+                type="search"
+                placeholder="Type a city..."
+                autofocus="on"
+                autocomplete="off"
+                id="city-input"
+              />
+            </div>
+            <div class="col-3">
+              <input
+                type="submit"
+                value="Search"
+                class="form-control btn btn-primary shadow-sm"
+              />
+            </div>
+          </div>
+        </form>
+        <h1 class="current-city" id="city">Novokuznetsk</h1>
+        <ul>
+          <li class="weather-conditions">Foggy</li>
+          <li id="week-Day">Wednesday 20</li>
+        </ul>
+
+        <div class="degrees">
+          <img
+            src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+            alt="Cloudy icon"
+            class="weather-icon"
+          />
+
+          <span class="temperature" id="temperature">4</span>
+          <span class="units"
+            ><a href="#" id="celsius">℃</a> |
+            <a href="#" id="fahrenheit">F</a></span
+          >
+        </div>
+
+        <div class="row">
+          <div class="col">Mon</div>
+          <div class="col">Tue</div>
+          <div class="col">Wed</div>
+          <div class="col">Thu</div>
+          <div class="col">Fri</div>
+        </div>
+        <div class="row">
+          <div class="col"><i class="far fa-snowflake"></i></div>
+          <div class="col"><i class="far fa-snowflake"></i></div>
+          <div class="col"><i class="far fa-snowflake"></i></div>
+          <div class="col"><i class="far fa-snowflake"></i></div>
+          <div class="col"><i class="far fa-snowflake"></i></div>
+        </div>
+        <div class="row" id="last-line">
+          <div class="col">4℃</div>
+          <div class="col">3℃</div>
+          <div class="col">2℃</div>
+          <div class="col">1℃</div>
+          <div class="col">5℃</div>
+        </div>
+        <ul class="other-days">
+          <li>Precipitation: 0%</li>
+          <li>Humidity: 77%</li>
+          <li>Wind: 8 km/h</li>
+        </ul>
+      </div>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
 </html>
