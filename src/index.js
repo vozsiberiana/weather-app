@@ -26,31 +26,39 @@ let currentDay = formatDate();
 let putDay = document.querySelector("li#week-Day");
 putDay.innerHTML = currentDay;
 
-function searchCity(event) {
-  event.preventDefault();
-  let cityElement = document.querySelector("#city");
-  let cityInput = document.querySelector("#city-input");
-  cityElement.innerHTML = cityInput.value;
-
+function search(city) {
   let apiKey = "10f664775f8229377be08579cf615f5c";
   let units = "metric";
-  let city = cityInput.value;
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
 
   axios.get(url).then(displayWeather);
 }
 
-let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", searchCity);
+function handleSubmit(event) {
+  event.preventDefault();
+  let city = document.querySelector("#city-input").value;
 
-function displayWeather(response) {
-  let temperature = Math.round(response.data.main.temp);
-  //let city = response.data.name;
-  let temperatureContainer = document.querySelector("#temperature");
-  // let message = `It is ${temperature} degrees in ${city}`;
-  temperatureContainer.innerHTML = temperature;
+  search(city);
 }
 
+let searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("submit", handleSubmit);
+
+function displayWeather(response) {
+  document.querySelector("#city").innerHTML = response.data.name;
+  document.querySelector("#temperature").innerHTML = Math.round(
+    response.data.main.temp
+  );
+  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#wind").innerHTML = Math.round(
+    response.data.wind.speed
+  );
+  document.querySelector("#description").innerHTML =
+    response.data.weather[0].main;
+  document.querySelector("#pressure").innerHTML = response.data.main.pressure;
+}
+
+search("Barcelona");
 /*function convertToFahrenheit() {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");

@@ -72,6 +72,6 @@ li {
   top: -25px;
 }
 .open-source-line {
-  display: block;
-  margin: 0 auto;
+  text-align: center;
+  font-size: 12px;
 }

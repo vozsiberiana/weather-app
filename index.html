@@ -42,9 +42,9 @@
             </div>
           </div>
         </form>
-        <h1 class="current-city" id="city">Novokuznetsk</h1>
+        <h1 class="current-city" id="city"></h1>
         <ul>
-          <li class="weather-conditions">Foggy</li>
+          <li class="weather-conditions" id="description"></li>
           <li id="week-Day">Wednesday 20</li>
         </ul>
 
@@ -55,7 +55,7 @@
             class="weather-icon"
           />
 
-          <span class="temperature" id="temperature">4</span>
+          <span class="temperature" id="temperature"></span>
           <span class="units"
             ><a href="#" id="celsius">℃</a> |
             <a href="#" id="fahrenheit">F</a></span
@@ -84,9 +84,9 @@
           <div class="col">5℃</div>
         </div>
         <ul class="other-days">
-          <li>Precipitation: 0%</li>
-          <li>Humidity: 77%</li>
-          <li>Wind: 8 km/h</li>
+          <li>Pressure: <span id="pressure"></span></li>
+          <li>Humidity: <span id="humidity"></span> %</li>
+          <li>Wind: <span id="wind"></span> km/h</li>
         </ul>
       </div>
       <div class="open-source-line">
