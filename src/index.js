@@ -26,7 +26,7 @@ let currentDay = formatDate();
 let putDay = document.querySelector("li#week-Day");
 putDay.innerHTML = currentDay;
 
-function search(city) {
+function searchCity(city) {
   let apiKey = "10f664775f8229377be08579cf615f5c";
   let units = "metric";
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
@@ -38,7 +38,7 @@ function handleSubmit(event) {
   event.preventDefault();
   let city = document.querySelector("#city-input").value;
 
-  search(city);
+  searchCity(city);
 }
 
 let searchForm = document.querySelector("#search-form");
@@ -58,7 +58,21 @@ function displayWeather(response) {
   document.querySelector("#pressure").innerHTML = response.data.main.pressure;
 }
 
-search("Barcelona");
+function searchLocation(position) {
+  let apiKey = "10f664775f8229377be08579cf615f5c";
+  let url = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
+  axios.get(url).then(displayWeather);
+}
+
+function getCurrentLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(searchLocation);
+}
+
+let currentLocationButton = document.querySelector("#current-location-button");
+currentLocationButton.addEventListener("click", getCurrentLocation);
+
+searchCity("Barcelona");
 /*function convertToFahrenheit() {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
